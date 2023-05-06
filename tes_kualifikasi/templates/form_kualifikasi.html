@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form Data Kualifikasi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+  </head>
+  <body>
+    <div class="flex items-center justify-center h-screen bg-red-600">
+      <div class="bg-white p-8 rounded-lg w-120">
+        <h4 class="text-red-600 text-3xl text-center mb-4">FORM DATA KUALIFIKASI</h4>
+        <form method="POST" action="/tes_kualifikasi/pertanyaan_kualifikasi/">
+          {% csrf_token %}
+          <table class="mx-auto">
+            <tr>
+              <td>Nomor batch:</td>
+              <td><input type="text" id="Nomor_Batch" name="Nomor_Batch" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required></td>
+            </tr>
+            <tr>
+              <td>Tempat pelaksanaan:</td>
+              <td>
+                <select id="tempat_pelaksanaan" name="tempat_pelaksanaan" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required>
+                  <option value="">Pilih tempat pelaksanaan</option>
+                  <option value="Jakarta">Jakarta</option>
+                  <option value="Kuala Lumpur">Kuala Lumpur</option>
+                  <option value="France">France</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Tanggal pelaksanaan:</td>
+              <td>
+                <select id="tanggal_pelaksanaan" name="tanggal_pelaksanaan" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required>
+                  <option value="">Pilih tanggal pelaksanaan</option>
+                  <option value="2022-12-25">2022-12-25</option>
+                  <option value="2023-04-26">2023-04-26</option>
+                  <option value="2023-10-30">2023-10-30</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input class="btn btn-primary bg-red-600 text-white py-2 px-4 rounded-md mt-3" type="submit" value="Next" id="newBtn"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

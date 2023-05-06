@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pertanyaan Kualifikasi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+</head>
+<body>
+  <div class="flex items-center justify-center h-screen bg-red-600">
+    <div class="bg-white p-8 rounded-lg w-120">
+      <h4 class="text-red-600 text-3xl text-center mb-4">PERTANYAAN KUALIFIKASI</h4>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-4">
+          <p class="font-medium">Apa yang dimaksud dengan shuttlecock?</p>
+          <div class="ml-4">
+            <input type="radio" id="q1_choice1" name="question1" value="choice1">
+            <label for="q1_choice1">Bulu ayam</label><br>
+            <input type="radio" id="q1_choice2" name="question1" value="choice2">
+            <label for="q1_choice2">Kepala raket</label><br>
+            <input type="radio" id="q1_choice3" name="question1" value="choice3">
+            <label for="q1_choice3">Karet grip</label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-medium">Berapa banyak pemain dalam satu regu ganda?</p>
+          <div class="ml-4">
+            <input type="radio" id="q2_choice1" name="question2" value="choice1">
+            <label for="q2_choice1">1 pemain</label><br>
+            <input type="radio" id="q2_choice2" name="question2" value="choice2">
+            <label for="q2_choice2">2 pemain</label><br>
+            <input type="radio" id="q2_choice3" name="question2" value="choice3">
+            <label for="q2_choice3">4 pemain</label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-medium">Apakah aturan let dalam permainan bulu tangkis?</p>
+          <div class="ml-4">
+            <input type="radio" id="q3_choice1" name="question3" value="choice1">
+            <label for="q3_choice1">Tidak ada aturan let</label><br>
+            <input type="radio" id="q3_choice2" name="question3" value="choice2">
+            <label for="q3_choice2">Let diulang</label><br>
+            <input type="radio" id="q3_choice3" name="question3" value="choice3">
+            <label for="q3_choice3">Let dianggap point</label>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <p class="font-medium">Berapa banyak game yang harus dimenangkan untuk memenangkan pertandingan bulu tangkis tunggal?</p>
+          <div class="ml-4">
+            <input type="radio" id="q7_choice1" name="question7" value="choice1">
+            <label for="q7_choice1">1 game</label><br>
+            <input type="radio" id="q7_choice2" name="question7" value="choice2">
+            <label for="q7_choice2">2 game</label><br>
+            <input type="radio" id="q7_choice3" name="question7" value="choice3">
+            <label for="q7_choice3">3 game</label>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <p class="font-medium">Apa nama permainan di bulu tangkis ketika kedua pemain memiliki skor yang sama dan harus mencapai selisih dua poin untuk memenangkan game?</p>
+          <div class="ml-4">
+            <input type="radio" id="q8_choice1" name="question8" value="choice1">
+            <label for="q8_choice1">Deuce</label><br>
+            <input type="radio" id="q8_choice2" name="question8" value="choice2">
+            <label for="q8_choice2">Match point</label><br>
+            <input type="radio" id="q8_choice3" name="question8" value="choice3">
+            <label for="q8_choice3">Set point</label>
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <input class="btn btn-primary bg-red-600 text-white py-2 px-4 rounded-md mt-2" type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

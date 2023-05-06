@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-red-600 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg w-120">
+        <div class="div-row mb-4">
+            <h1 class="text-red-600 text-3xl text-center mb-4">DASHBOARD UMPIRE: {{data.fname}} {{data.lname}}</h1>
+        </div>
+        <div class="div-row mb-4">
+            <label for="Nama_Umpire" class="font-bold">Nama:</label>
+            <input id="Nama_Umpire" value="Constantia Fowkes" type="text" name="Nama_Umpire" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Negara_Asal" class="font-bold">Negara:</label>
+            <input id="Negara_Asal" value="Japan" type="text" name="Negara_Asal" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="email" class="font-bold">Email:</label>
+            <input id="email" value="cfowkes0@cnet.com" type="email" name="email" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+    </div>
+</body>
+
+</html>

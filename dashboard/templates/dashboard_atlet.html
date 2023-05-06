@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD PENGGUNA</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-red-600 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg w-120 h-96 overflow-y-auto">
+        <div class="div-row mb-4">
+            <h1 class="text-red-600 text-3xl text-center mb-4">DASHBOARD ATLET: {{data.fname}} {{data.lname}}</h1>
+        </div>
+        <div class="div-row mb-4">
+            <label for="Nama_Lengkap" class="font-bold">Nama Lengkap:</label>
+            <input id="Nama_Lengkap" value="Tedra Braferton" type="text" name="Nama_Lengkap" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Negara_Asal" class="font-bold">Negara:</label>
+            <input id="Negara_Asal" value="Russia" type="text" name="Negara_Asal" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="email" class="font-bold">Email:</label>
+            <input id="email" value="tbraferton1b@mashable.com" type="email" name="email" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Tgl_Lahir" class="font-bold">Tanggal Lahir:</label>
+            <input id="Tgl_Lahir" value="1989-02-21" type="Tgl_Lahir" name="Tgl_Lahir" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Play_Right" class="font-bold">Play (Right/Left Hand):</label>
+            <input id="Play_Right" value="Right Hand" type="Play_Right" name="Play_Right" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Height" class="font-bold">Tinggi badan:</label>
+            <input id="Height" value="184" type="Height" name="Height" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Jenis_Kelamin" class="font-bold">Jenis Kelamin:</label>
+            <input id="Jenis_Kelamin" value="Putri" type="Jenis_Kelamin" name="Jenis_Kelamin" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Pelatih" class="font-bold">Pelatih:</label>
+            <input id="Pelatih" value="-" type="Pelatih" name="Pelatih" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Status" class="font-bold">Status:</label>
+            <input id="Status" value="Qualified" type="Status" name="Status" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="World_Rank" class="font-bold">World rank:</label>
+            <input id="World_Rank" value="48" type="World_Rank" name="World_Rank" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+        <div class="div-row mb-4">
+            <label for="Total_Point" class="font-bold">Total poin:</label>
+            <input id="Total_Point" value="600" type="Total_Point" name="Total_Point" disabled
+                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
+        </div>
+    </div>
+</body>
+
+</html>
