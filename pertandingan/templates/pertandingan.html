@@ -1,24 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h5>Pertandingan</h5>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DASHBOARD</title>
+    <title>Lihat Event</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .menu {
-            grid-area: menu;
-        }
-        .center {
-            align-content: center;
-        }
-    </style>
+ 
     <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div class="relative flex h-16 items-center justify-between">
@@ -51,9 +42,9 @@
               <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="/dashboard/" href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page" >Dashboard</a>
-                  <a href="/tes_kualifikasi/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
-                  <a href="/daftar_event/"  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Event</a>
+                  <a href="/dashboard/" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+                  <a href="/lihat_event/"  class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page" >Lihat Event</a>
+                  <a href="/hasil_pertandingan/"  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Hasil Pertandingan</a>
                 </div>
               </div>
             </div>
@@ -98,192 +89,418 @@
           <div class="space-y-1 px-2 pb-3 pt-2">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="/dashboard/" href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page" >Dashboard</a>
-            <a href="/tes_kualifikasi/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
-            <a href="/daftar_event/"  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Event</a>
+            <a href="/lihat_event/"  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Lihat Event</a>
+            <a href="/hasil_pertandingan/"  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Hasil Pertandingan</a>
           </div>
         </div>
       </nav>
 </head>
 
 <body>
-    <div class="bg-white p-8 rounded-lg w-120">
-        <div class="div-row mb-4">
-            <h1 class="text-red-600 text-3xl text-center mb-4">DASHBOARD UMPIRE {{data.fname}} {{data.lname}}</h1>
-        </div>
-        <div class="div-row mb-4">
-            <label for="Nama_Umpire" class="font-bold">Nama:</label>
-            <input id="Nama_Umpire" value="Constantia Fowkes" type="text" name="Nama_Umpire" disabled
-                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
-        </div>
-        <div class="div-row mb-4">
-            <label for="Negara_Asal" class="font-bold">Negara:</label>
-            <input id="Negara_Asal" value="Japan" type="text" name="Negara_Asal" disabled
-                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
-        </div>
-        <div class="div-row mb-4">
-            <label for="email" class="font-bold">Email:</label>
-            <input id="email" value="cfowkes0@cnet.com" type="email" name="email" disabled
-                class="border border-gray-300 px-2 py-1 rounded-md ml-2 mt-2 w-full" />
-        </div>
-    </div>
+    
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">PERTANDINGAN</h2>
+    <h2 class="font-bold text-red-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">Pertandingan Perempat Final</h2>
     <div class="flex justify-center">
         <div class="menu">
-        <div class="font-mono">
-        <div class="text-red-700">PERTANDINGAN PEREMPAT FINAL</div>
-        <div>00:00</div>
-        <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Tim 1</th>
-                <th>Tim 2</th>
-                <th>Skor Tim 1</th>
-                <th>Skor Tim 2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>C</td>
-                <td>D</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>E</td>
-                <td>F</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>G</td>
-                <td>H</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-            </tbody>
+        <h2 class="font-bold text-black-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">00:00</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                  <tr>
+                      <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                          Tim 1
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Tim 2
+                      </th>
+                      <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                          Skor Tim 1
+                      </th>
+                      <th scope="col" class="px-6 py-3">
+                          Skor Tim 2
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                          A
+                      </th>
+                      <td class="px-6 py-4">
+                          B
+                      </td>
+                      <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                      
+                      <td class="px-6 py-4">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                          C
+                      </th>
+                      <td class="px-6 py-4">
+                          D
+                      </td>
+                      <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                      
+                      <td class="px-6 py-4">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                          E
+                      </th>
+                      <td class="px-6 py-4">
+                          F
+                      </td>
+                      <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                      
+                      <td class="px-6 py-4">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-700">
+                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                          G
+                      </th>
+                      <td class="px-6 py-4">
+                          H
+                      </td>
+                      <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                      
+                      <td class="px-6 py-4">
+                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                        <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                          <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                      </td>
+                  </tr>
+              </tbody>
           </table>
-        <div>PERTANDINGAN SEMIFINAL</div>
-        <div>00:00</div>
-        <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Tim 1</th>
-                <th>Tim 2</th>
-                <th>Skor Tim 1</th>
-                <th>Skor Tim 2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>C</td>
-                <td>D</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>E</td>
-                <td>F</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>G</td>
-                <td>H</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-            </tbody>
-          </table>
-        <div>PERTANDINGAN JUARA 3</div>
-        <div>00:00</div>
-        <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Tim 1</th>
-                <th>Tim 2</th>
-                <th>Skor Tim 1</th>
-                <th>Skor Tim 2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>C</td>
-                <td>D</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>E</td>
-                <td>F</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>G</td>
-                <td>H</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-            </tbody>
-          </table>
-        <div>PERTANDINGAN FINAL</div>
-        <div>00:00</div>
-        <table class="table-auto">
-            <thead>
-              <tr>
-                <th>Tim 1</th>
-                <th>Tim 2</th>
-                <th>Skor Tim 1</th>
-                <th>Skor Tim 2</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>C</td>
-                <td>D</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>E</td>
-                <td>F</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>G</td>
-                <td>H</td>
-                <td>1</td>
-                <td>2</td>
-              </tr>
-            </tbody>
-          </table>
+          
         </div>
+        <div class="flex justify-center"> 
+          <button class="text-white bg-red-500 m-5 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">NEXT</button>
+        </div>
+        <div class="font-bold text-red-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">Pertandingan Semifinal</div>
+        <h2 class="font-bold text-black-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">00:00</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Tim 2
+                  </th>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Skor Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Skor Tim 2
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      A
+                  </th>
+                  <td class="px-6 py-4">
+                      B
+                  </td>
+                  <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+              </tr>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      C
+                  </th>
+                  <td class="px-6 py-4">
+                      D
+                  </td>
+                  <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table></div>
+      <div class="flex justify-center"> 
+        <button class="text-white bg-red-500 m-5 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">NEXT</button>
+      </div>
+        <div class="font-bold text-red-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">Pertandingan Juara 3</div>
+        <h2 class="font-bold text-black-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">00:00</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Tim 2
+                  </th>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Skor Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Skor Tim 2
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      A
+                  </th>
+                  <td class="px-6 py-4">
+                      B
+                  </td>
+                  <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table></div>
+      <div class="flex justify-center"> 
+        <button class="text-white bg-red-500 m-5 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">NEXT</button>
+      </div>
+        <div class="font-bold text-red-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">Pertandingan Final</div>
+        <h2 class="font-bold text-black-700 sm:truncate sm:text-2xl sm:tracking-tight text-center pt-4">00:00</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+              <tr>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Tim 2
+                  </th>
+                  <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                      Skor Tim 1
+                  </th>
+                  <th scope="col" class="px-6 py-3">
+                      Skor Tim 2
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr class="border-b border-gray-200 dark:border-gray-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                      A
+                  </th>
+                  <td class="px-6 py-4">
+                      B
+                  </td>
+                  <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+                  
+                  <td class="px-6 py-4">
+                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                      <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                        <span class="m-auto text-2xl font-thin">−</span>
+                      </button>
+                      <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"></input>
+                    <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                      <span class="m-auto text-2xl font-thin">+</span>
+                    </button>
+                  </td>
+              </tr>
+          </tbody>
+          
+      </table></div>
+        </div>
+    
     </div>
-    </div>
+    <div class="flex justify-center"> 
+    <button class="text-white bg-red-500 m-5 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">DONE</button>
+  </div>
+  
+
+
+    
+
+<style>
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }
+</style>
+
+<script>
+  function decrement(e) {
+    const btn = e.target.parentNode.parentElement.querySelector(
+      'button[data-action="decrement"]'
+    );
+    const target = btn.nextElementSibling;
+    let value = Number(target.value);
+    value--;
+    target.value = value;
+  }
+
+  function increment(e) {
+    const btn = e.target.parentNode.parentElement.querySelector(
+      'button[data-action="decrement"]'
+    );
+    const target = btn.nextElementSibling;
+    let value = Number(target.value);
+    value++;
+    target.value = value;
+  }
+
+  const decrementButtons = document.querySelectorAll(
+    `button[data-action="decrement"]`
+  );
+
+  const incrementButtons = document.querySelectorAll(
+    `button[data-action="increment"]`
+  );
+
+  decrementButtons.forEach(btn => {
+    btn.addEventListener("click", decrement);
+  });
+
+  incrementButtons.forEach(btn => {
+    btn.addEventListener("click", increment);
+  });
+</script>
 </body>
 
 </html>
