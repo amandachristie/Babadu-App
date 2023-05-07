@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div class="bg-white py-8 px-4 shadow-md rounded-lg">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img class="mx-auto h-20 w-auto mb-8" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+          <h2 class="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900 ">Register</h2>
+        </div>
+        
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form class="space-y-6" action="#" method="POST">
+            <div>
+              <label for="role" class="block text-sm font-medium leading-6 text-gray-900">Select your role</label>
+              <div class="mt-2">
+                <select id="role" name="role" onchange="registerRedirect(this.value)" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <option value="">--Select--</option>
+                    <option value="ATLET">ATLET</option>
+                    <option value="PELATIH">PELATIH</option>
+                    <option value="UMPIRE">UMPIRE</option>
+                  </select>
+                  
+                  <script>
+                  function registerRedirect(role) {
+                    switch(role) {
+                      case 'ATLET':
+                        window.location.href = '/register-atlet/';
+                        break;
+                      case 'PELATIH':
+                        window.location.href = '/register-pelatih/';
+                        break;
+                      case 'UMPIRE':
+                        window.location.href = '/register-umpire/';
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                  </script>
+                  
+              </div>
+            </div>
+          </form>
+        
+          <p class="mt-10 text-center text-sm text-gray-500">
+            Already have an account?
+            <a href="/login/" class="font-semibold leading-6 text-red-600 hover:text-red-500">Login here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+{% endblock content %}

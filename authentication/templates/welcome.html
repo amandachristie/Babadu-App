@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+button {
+    transition: all 0.2s;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+</style>
+
+<div class="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div class="bg-white py-8 px-4 shadow-md rounded-lg">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img class="mx-auto h-20 w-auto mb-8" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+          <h2 class="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900 ">BABADU - B13</h2>
+          <h1 class="mt-2 text-center text-xl font-normal leading-9 tracking-tight text-gray-900 pt-2">Choose your action below</h1>
+        
+          <div class="flex justify-center mt-8">
+            <button type="submit" onclick="window.location.href='/login'" class="w-1/2 flex justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mr-2">
+                Login
+            </button>              
+            <button type="submit" onclick="window.location.href='/register'"class="w-1/2 flex justify-center rounded-md bg-gray-800 text-gray-100 px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 ml-2">
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+{% endblock content %}

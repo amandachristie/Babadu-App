@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'list_event',
     'pertandingan',
     'hasil_pertandingan',
+    'authentication',
 ]
 
 MIDDLEWARE = [
