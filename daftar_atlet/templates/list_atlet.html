@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
@@ -84,28 +85,72 @@
       </div>
     </div>
   </nav>
+  
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">List Atlet</h2>
+  <p class="text-sm text-gray-500 text-center p-4">List Atlet yang sedang dilatih:</p>
+  <div class="container flex justify-center mx-auto pt-4">
+    <div class="flex flex-col">
+        <div class="w-full">
+            <div class="border-b border-gray-200 shadow">
+                <table class="divide-y divide-gray-300 ">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Nama Atlet
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Email
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                World Rank
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-300">
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                Sukiman1
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    Sukiman1@gmail.com
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500">1</div>
+                            </td>
+                        </tr>
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                Sukiman2
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    Sukiman2@gmail.com
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500">2</div>
+                            </td>
+                        </tr>
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                Sukiman3
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    Sukiman3@gmail.com
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500">3</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Daftar Atlet</h2>   
-  <!-- <p  class="text-sm text-gray-500 text-center p-4">Daftarkan sponsor Anda dari daftar sponsor yang tersedia untuk mendukung aktivitas Anda sebagai atlet.</p>      -->
-  <div class="min-h-screen">
-		<div class="flex flex-col items-center justify-center px-2 py-4">
-			<div class="w-full content-center bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-red-700">
-				<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-					<form class="space-y-4 md:space-y-6" action="#">
-						<div>
-							<label for="atlet"
-								class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Atlet yang mau didaftarkan:</label>
-								<button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">--Select--<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-								<!-- Dropdown menu -->
-								<div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-80 rounded-lg shadow w-44 dark:bg-red-500">
-								</div>                                
-						</div>
-						<button type="submit"
-							class="w-full text-white bg-red-500 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">SUBMIT</button>
-						<p class="text-sm font-light text-gray-500 dark:text-gray-400"></p>
-					</form>
-				</div>
-			</div>
-		</div>
-  </div>
 {% endblock content %}
