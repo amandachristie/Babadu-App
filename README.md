@@ -18,7 +18,7 @@ Anggota kelompok:
 - Dashboard: Profile atlet, berisi nama lengkap, negara, email, tanggal lahir, play, tinggi badan, jenis kelamin, pelatih, status kualifikasi, world rank, dan total poin
 - Tes Kualifikasi
   - Form Data Kualifikasi
-  - Pernyataan Kualifikasi
+  - Pertanyaan Kualifikasi
 - Daftar Event: Atlet mendaftarkan dirinya pada event yang sedang berlangsung
   - Pemilihan stadium
   - Pemilihan Event
