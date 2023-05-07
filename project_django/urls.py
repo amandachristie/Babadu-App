@@ -27,4 +27,5 @@ urlpatterns = [
     path('list_event/', include('list_event.urls')),
     path('pertandingan/', include('pertandingan.urls')),
     path('tes_kualifikasi/', include('tes_kualifikasi.urls')),
+    path('', include('authentication.urls')),
 ]
