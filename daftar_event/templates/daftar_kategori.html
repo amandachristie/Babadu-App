@@ -34,11 +34,11 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/dashboard/" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
-              <a href="/tes_kualifikasi/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
-              <a href="/daftar_event/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Event</a>
-              <a href="/enrolled_event/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Enrolled Event</a>
-              <a href="/daftar_sponsor/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Sponsor</a>
+              <a href="#" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
+              <a class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Daftar Event</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enrolled Event</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Sponsor</a>
             </div>
           </div>
         </div>
@@ -82,17 +82,17 @@
     <div class="sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/dashboard/" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
-        <a href="/tes_kualifikasi/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
-        <a href="/daftar_event/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Event</a>
-        <a href="/enrolled_event/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Enrolled Event</a>
-        <a href="/daftar_sponsor/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Sponsor</a>
+        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Tes Kualifikasi</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Event</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Enrolled Event</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Sponsor</a>
       </div>
     </div>
   </nav>
   
-  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Enrolled Events</h2>
-  <p class="text-sm text-gray-500 text-center p-4">When you sign up for event tournaments you can conveniently access them here.  Keep up with relevant dates and information.</p>
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Daftar Event</h2>
+  <p class="text-sm text-gray-500 text-center p-4">Daftarkan diri anda  pada event yang akan berlangsung</p>
   <div class="container flex justify-center mx-auto pt-4">
     <div class="flex flex-col">
         <div class="w-full">
@@ -101,28 +101,10 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-2 text-base text-gray-500">
-                                Event
+                                Kategori
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
-                                Stadium
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Hadiah
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Superseries
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Spesialisasi
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Tanggal Mulai
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Tanggal Selesai
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Kapasitas
+                                Partner
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
                                 
@@ -131,112 +113,59 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300">
                         <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open
-                            </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    Stade Pierre de Coubertin
+                                    Tunggal Putra
                                 </div>
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">850000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S750</div>
-                            </td>
-                            
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                XD
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                08-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                13-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                4200
+                            <td class="px-6 py-4 text-center text-sm text-gray-500">
+                                -
                             </td>
                             <td class="px-6 py-4">
                                 <span class="sm:ml-3">
                                     <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
+                                      Join
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                Ganda Putra
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">
+                                <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">-Select Partner-<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+								<!-- Dropdown menu -->
+								<div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-80 rounded-lg shadow w-44 dark:bg-red-500">
+								</div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="sm:ml-3">
+                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
+                                      Join
                                     </button>
                                   </span>
                             </td>
                         </tr>
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open
+                                Ganda Campuran
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Stade Pierre de Coubertin
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">850000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S750</div>
-                            </td>
-                            
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                MS
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                08-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                13-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                4200
+                            <td class="px-6 py-4 text-sm text-gray-900">
+                                <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">-Select Partner-<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+								<!-- Dropdown menu -->
+								<div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-80 rounded-lg shadow w-44 dark:bg-red-500">
+								</div>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="sm:ml-3">
                                     <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
+                                      Join
                                     </button>
                                   </span>
                             </td>
                         </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                Indonesia Open
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Istora Gelora Bung Karno
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">1250000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S1000</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                XD
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                01-07-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                06-07-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                7166
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
-                                    </button>
-                                  </span>
-                            </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
