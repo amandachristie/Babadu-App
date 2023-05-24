@@ -1,6 +1,99 @@
 {% extends 'base.html' %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
 {% block content %}
-<h5>Dashboard</h5>
+<main class="py-6">
+    <div class="flex flex-col align-items-center justify-content-center w-screen min-h-screen bg-gray-900 px-10 py-10">
+        <section id="perempat-final" style="display: block;">
+            <div class="py-4">
+                <h1 class="text-center text-2xl text-gray-900 dark:text-white font-semibold">PROFILE</h1>
+            </div>
+            <div class="grid grid-cols-3 gap-x-3 gap-y-3">
+                <div></div>
+                {% if request.session.is_atlet %}
+                <div
+                    class="max-w-screen-xl p-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white py-6 ">Profile Atlet</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Nama lengkap: {{ user_logged_in.nama }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Negara: {{ user_logged_in.negara_asal }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Email: {{ user_logged_in.email }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Tanggal lahir: {{ user_logged_in.tgl_lahir }}
+                    </p>
+                    {% if user_logged_in.play_right %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Play: Right Hand
+                    </p>
+                    {% else %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Play: Left Hand
+                    </p>
+                    {% endif %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Tinggi badan: {{ user_logged_in.height }}
+                    </p>
+                    {% if user_logged_in.jenis_kelamin %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Jenis kelamin: Laki - laki
+                    </p>
+                    {% else %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Jenis kelamin: Perempuan
+                    </p>
+                    {% endif %}
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Pelatih: -
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Status: {{ status }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">World rank: {{ user_logged_in.world_rank }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Total poin: {{ total_poin }}
+                    </p>
+                </div>
+                {% endif %}
+                {% if request.session.is_pelatih %}
+                <div
+                    class="max-w-screen-xl p-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Profile Pelatih</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Nama lengkap: {{ user_logged_in.nama }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Negara: {{ user_logged_in.negara }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Email: {{ user_logged_in.email }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Spesialisasi Kategori: {{ spesialisasi }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Tanggal Mulai: {{tanggal_mulai}}
+                    </p>
+                </div>
+                {% endif %}
+                {% if request.session.is_umpire %}
+                <div
+                    class="max-w-screen-xl p-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Profile Umpire</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Nama lengkap: {{ user_logged_in.nama }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Negara: {{ user_logged_in.negara }}
+                    </p>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Email: {{ user_logged_in.email }}
+                    </p>
+                </div>
+                {% endif %}
 
+            </div>
+
+        </section>
+    </div>
+    </div>
+    </div>
+
+    </div>
+</main>
+
+</html>
 {% endblock content %}

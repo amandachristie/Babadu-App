@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'example_app',
     'dashboard',
     'tes_kualifikasi',
     'daftar_atlet',
     'daftar_event',
     'daftar_sponsor',
     'enrolled_event',
+    'enrolled_partai_kompetisi_event',
     'list_event',
     'pertandingan',
     'hasil_pertandingan',
@@ -89,8 +89,15 @@ WSGI_APPLICATION = 'project_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=babadu'
+        },
+        'NAME' : 'railway',
+        'USER' : 'postgres',
+        'PASSWORD' : 'BFNIsd1re9Iamm7uyeb9',
+        'HOST' : 'containers-us-west-39.railway.app',
+        'PORT' : '7733'
     }
 }
 
