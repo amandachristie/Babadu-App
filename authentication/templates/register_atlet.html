@@ -16,10 +16,14 @@
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
           <img class="mx-auto h-10 w-auto mb-8" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
           <h2 class="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">Registrasi Atlet</h2>
+          {% if error %}
+            <p class="text-red-500 mt-4 text-center">{{ error }}</p>
+          {% endif %}
         </div>
 
 <div class="max-w-md md:max-w-md max-w-md px-4 sm:px-3 lg:px-3 py-8">
     <form class="space-y-8 px-4" action="#" method="POST">
+        {% csrf_token %}
     <div class="grid grid-cols-2 gap-6">    
     <div >
       <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Name</label>
@@ -45,7 +49,7 @@
       <div>
         <label for="birthdate" class="block text-sm font-medium leading-6 text-gray-900">Tanggal Lahir</label>
         <div class="mt-2">
-          <input id="birthdate" name="birthdate" type="birthdate" autocomplete="birthdate" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <input id="birthdate" name="birthdate" type="date" autocomplete="birthdate" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
         </div>
       </div>
 
