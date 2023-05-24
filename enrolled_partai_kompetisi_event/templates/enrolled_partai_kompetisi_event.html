@@ -91,7 +91,7 @@
     </div>
   </nav>
   
-  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Enrolled Events</h2>
+  <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Enrolled Partai Kompetisi Event</h2>
   <p class="text-sm text-gray-500 text-center p-4">When you sign up for event tournaments you can conveniently access them here.  Keep up with relevant dates and information.</p>
   <div class="container flex justify-center mx-auto pt-4">
     <div class="flex flex-col">
@@ -110,6 +110,9 @@
                                 Stadium
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
+                                Jenis Partai
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
                                 Kategori Superseries
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
@@ -118,38 +121,31 @@
                             <th class="px-6 py-2 text-base text-gray-500">
                                 Tanggal Selesai
                             </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Action
-                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300">
-                        {% for event in data_enrolled_event %}
+                        {% for partai_kompetisi in data_enrolled_partai_kompetisi_event %}
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                {{ event.nama_event }}
+                                {{ partai_kompetisi.nama_event }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                {{ event.tahun }}
+                                {{ partai_kompetisi.tahun }}
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">{{ event.nama_stadium }}</div>
+                                <div class="text-sm text-gray-500">{{ partai_kompetisi.nama_stadium }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">{{ event.kategori_superseries }}</div>
+                              <div class="text-sm text-gray-500">{{ partai_kompetisi.jenis_partai }}</div>
+                          </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-500">{{ partai_kompetisi.kategori_superseries }}</div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">
-                              {{ event.tgl_mulai }}
+                              {{ partai_kompetisi.tgl_mulai }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">
-                              {{ event.tgl_selesai }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      <a href="delete_event/">Unenrolled</a> 
-                                    </button>
-                                  </span>
+                              {{ partai_kompetisi.tgl_selesai }}
                             </td>
                         </tr>
                       {% endfor %} 
