@@ -1,6 +1,373 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h5>List Event</h5>
+<head>
+    <meta charset="utf-8">
+    
+    
+    <title>tickets for events - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com">
+    
+        tailwind.config = {
+            prefix: "tw-"
+        }
+    </script>
+    <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Oswald');
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box
+    }
+    
+    body {
+        background-color: #dadde6;
+        font-family: arial
+    }
+    
+    .fl-left {
+        float: left
+    }
+    
+    .fl-right {
+        float: right
+    }
+    
+    h1 {
+        text-transform: uppercase;
+        font-weight: 900;
+        border-left: 10px solid #fec500;
+        padding-left: 10px;
+        margin-bottom: 30px
+    }
+    
+    .row {
+        overflow: hidden
+    }
+    
+    .card {
+        display: table-row;
+        width: 49%;
+        background-color: #fff;
+        color: #989898;
+        margin-bottom: 10px;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        border-radius: 4px;
+        position: relative
+    }
+    
+    .card+.card {
+        margin-left: 2%
+    }
+    
+    .date {
+        display: table-cell;
+        width: 25%;
+        position: relative;
+        text-align: center;
+        border-right: 2px dashed #dadde6
+    }
+    
+    .date:before,
+    .date:after {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-color: #DADDE6;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        z-index: 1;
+        border-radius: 50%
+    }
+    
+    .date:after {
+        top: auto;
+        bottom: -15px
+    }
+    
+    .date time {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%)
+    }
+    
+    .date time span {
+        display: block
+    }
+    
+    .date time span:first-child {
+        color: #2b2b2b;
+        font-weight: 600;
+        font-size: 250%
+    }
+    
+    .date time span:last-child {
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: -10px
+    }
+    
+    .card-cont {
+        display: table-cell;
+        width: 75%;
+        font-size: 85%;
+        padding: 10px 10px 30px 50px
+    }
+    
+    .card-cont h3 {
+        color: #3C3C3C;
+        font-size: 130%
+    }
+    
+    
+    .card-cont>div {
+        display: table-row
+    }
+    
+    .card-cont .even-date i,
+    .card-cont .even-info i,
+    .card-cont .even-date time,
+    .card-cont .even-info p {
+        display: table-cell
+    }
+    
+    .card-cont .even-date i,
+    .card-cont .even-info i {
+        padding: 5% 5% 0 0
+    }
+    
+    .card-cont .even-info p {
+        padding: 30px 50px 0 0
+    }
+    
+    .card-cont .even-date time span {
+        display: block
+    }
+    
+    .card-cont a {
+        display: block;
+        text-decoration: none;
+        width: 80px;
+        height: 30px;
+        background-color: #357fad;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 2px;
+        position: absolute;
+        right: 10px;
+        bottom: 10px
+    }
+    
 
+    
+    @media screen and (max-width: 860px) {
+        .card {
+            display: block;
+            float: none;
+            width: 100%;
+            margin-bottom: 10px
+        }
+        .card+.card {
+            margin-left: 0
+        }
+        .card-cont .even-date,
+        .card-cont .even-info {
+            font-size: 75%
+        }
+    }
+        </style>
+        <nav class="tw-bg-gray-800"> 
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+              <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                  <!-- Mobile menu button-->
+                  <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <!--
+                      Icon when menu is closed.
+          
+                      Menu open: "hidden", Menu closed: "block"
+                    -->
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <!--
+                      Icon when menu is open.
+          
+                      Menu open: "block", Menu closed: "hidden"
+                    -->
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                  <div class="flex flex-shrink-0 items-center">
+                    <img class="block h-8 w-auto lg:hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+                    <img class="hidden h-8 w-auto lg:block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+                  </div>
+                  <div class="hidden sm:ml-6 sm:block">
+                    <div class="flex space-x-4">
+                      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                      <a href="#" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+                      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
+                      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Event</a>
+                      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enrolled Event</a>
+                      <a class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Daftar Sponsor</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <span class="sr-only">View notifications</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                    </svg>
+                  </button>
+          
+                  <!-- Profile dropdown -->
+                  <div class="relative ml-3">
+                    <div>
+                      <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        <img class="h-8 w-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" alt="">
+                      </button>
+                    </div>
+          
+                    <!--
+                      Dropdown menu, show/hide based on menu state.
+          
+                      Entering: "transition ease-out duration-100"
+                        From: "transform opacity-0 scale-95"
+                        To: "transform opacity-100 scale-100"
+                      Leaving: "transition ease-in duration-75"
+                        From: "transform opacity-100 scale-100"
+                        To: "transform opacity-0 scale-95"
+                    -->
+                    <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                      <!-- Active: "bg-gray-100", Not Active: "" -->
+                      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="sm:hidden" id="mobile-menu">
+              <div class="space-y-1 px-2 pb-3 pt-2">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Tes Kualifikasi</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Event</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Enrolled Event</a>
+                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Sponsor</a>
+              </div>
+            </div>
+        <nav>
+    </head>
+    <body>
+    <section class="container">
+    <h1>Events</h1>
+    <div class="row">
+    <article class="card fl-left">
+    <section class="date">
+    <time datetime="23th feb">
+    <span>2022</span><span>08 May</span>
+    </time>
+    </section>
+    <section class="card-cont">
+    <small>US$ 400.000</small>
+    <h3>French Open</h3>
+    <div class="even-date">
+    <i class="fa fa-calendar"></i>
+    <time>
+    <span>S750</span>
+    <span>END: sunday 13 mei 2022</span>
+    <span>08:55pm to 12:00 am</span>
+    <span>Capacity: x </span>
+    </time>
+    </div>
+    <div class="even-info">
+    <i class="fa fa-map-marker"></i>
+    <p>
+    Stade Pierre de Coubertin
+    </p>
+    </div>
+    <a href="#">Mulai</a>
+    </section>
+    </article>
+    <article class="card fl-left">
+    <section class="date">
+    <time datetime="23th feb">
+    <span>2022</span><span>1 July</span>
+    </time>
+    </section>
+    <section class="card-cont">
+    <small>US$ 300.000</small>
+    <h3>Indonesia Open</h3>
+    <div class="even-date">
+    <i class="fa fa-calendar"></i>
+    <time>
+    <span>S1000</span>
+    <span>END: wednesday 06 July 2022</span>
+    <span>08:55pm to 12:00 am</span>
+    <span>Capacity: x</span>
+    </time>
+    </div>
+    <div class="even-info">
+    <i class="fa fa-map-marker"></i>
+    <p>
+    Istora Gelora Bung Karno
+    </p>
+    </div>
+    <a href="#">Mulai</a>
+    </section>
+    </article>
+    </div>
+    <div class="row">
+    <article class="card fl-left">
+    <section class="date">
+    <time datetime="23th feb">
+    <span>2023</span><span>1 AUG</span>
+    </time>
+    </section>
+    <section class="card-cont">
+    <small>US$ 200.000</small>
+    <h3>Australia Open</h3>
+    <div class="even-date">
+    <i class="fa fa-calendar"></i>
+    <time>
+    <span>S500</span>
+    <span>END: Saturday 06 July 2022</span>
+    <span>08:55pm to 12:00 am</span>
+    <span>Capacity: x</span>
+    </time>
+    </div>
+    <div class="even-info">
+    <i class="fa fa-map-marker"></i>
+    <p>
+    State Sports Centre
+    </p>
+    </div>
+    <a href="#">Mulai</a>
+    </section>
+    </article>
+    </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        
+    </script>
+    </body>
 {% endblock content %}
