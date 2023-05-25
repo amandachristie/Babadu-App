@@ -101,19 +101,16 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-2 text-base text-gray-500">
-                                Event
+                                Nama Event
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Tahun
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
                                 Stadium
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
-                                Hadiah
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Superseries
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                Spesialisasi
+                                Kategori Superseries
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
                                 Tanggal Mulai
@@ -122,123 +119,59 @@
                                 Tanggal Selesai
                             </th>
                             <th class="px-6 py-2 text-base text-gray-500">
-                                Kapasitas
-                            </th>
-                            <th class="px-6 py-2 text-base text-gray-500">
-                                
+                                Action
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300">
+                        {% for event in data_enrolled_event %}
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open
+                                {{ event.nama_event }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                {{ event.tahun }}
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Stade Pierre de Coubertin
-                                </div>
+                                <div class="text-sm text-gray-500">{{ event.nama_stadium }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">850000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S750</div>
-                            </td>
-                            
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                XD
+                                <div class="text-sm text-gray-500">{{ event.kategori_superseries }}</div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                08-05-2022
+                              {{ event.tgl_mulai }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                13-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                4200
+                              {{ event.tgl_selesai }}
                             </td>
                             <td class="px-6 py-4">
                                 <span class="sm:ml-3">
                                     <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
+                                      <a href="delete_event/{{event.nama_event}}/{{event.tahun}}">Unenrolled</a> 
                                     </button>
                                   </span>
                             </td>
                         </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Stade Pierre de Coubertin
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">850000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S750</div>
-                            </td>
-                            
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                MS
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                08-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                13-05-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                4200
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
-                                    </button>
-                                  </span>
-                            </td>
-                        </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                Indonesia Open
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Istora Gelora Bung Karno
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">1250000</div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-500">S1000</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                XD
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                01-07-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                06-07-2022
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                7166
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Unenrolled
-                                    </button>
-                                  </span>
-                            </td>
-                        </tr>
+                      {% endfor %} 
                     </tbody>
                 </table>
+
+                {% if list_enrolled_event %}
+                <p class="text-sm text-gray-700 text-center p-4">{{ list_enrolled_event }}</p>
+                {% endif %} 
+
+                {% if messages %}
+                  <div class="bg-red-500 text-white p-4 rounded-md mb-4">
+                      {% for message in messages %}
+                          {{ message }}
+                      {% endfor %}
+                      <button type="button" class="float-right p-2" onclick="this.parentElement.remove()">
+                          <svg class="fill-current h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                              <path d="M10 8.586L16.95 1.636A1 1 0 1 1 18.364 3.05L11.414 10l6.95 6.95a1 1 0 1 1-1.414 1.414L10 11.414l-6.95 6.95a1 1 0 1 1-1.414-1.414L8.586 10 1.636 3.05A1 1 0 1 1 3.05 1.636L10 8.586z"/>
+                          </svg>
+                      </button>
+                  </div>
+              {% endif %}
             </div>
         </div>
     </div>

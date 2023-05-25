@@ -1,0 +1,320 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <!--
+              Icon when menu is closed.
+  
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+              Icon when menu is open.
+  
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="block h-8 w-auto lg:hidden" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+            <img class="hidden h-8 w-auto lg:block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2012_BWF_logo.svg/1200px-2012_BWF_logo.svg.png" alt="Your Company">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Dashboard</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Atlet</a>
+        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">List Atlet</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span class="sr-only">View notifications</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+          </button>
+  
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <img class="h-8 w-8 rounded-full" src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" alt="">
+              </button>
+            </div>
+  
+            <!--
+              Dropdown menu, show/hide based on menu state.
+  
+              Entering: "transition ease-out duration-100"
+                From: "transform opacity-0 scale-95"
+                To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                From: "transform opacity-100 scale-100"
+                To: "transform opacity-0 scale-95"
+            -->
+            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Dashboard</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Atlet</a>
+        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">List Atlet</a>
+      </div>
+    </div>
+  </nav>
+  
+  <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Daftar Atlet</h1>
+  <h2 class="text-sm text-gray-500 text-center p-4">Atlet Kualifikasi</h2>
+  <div class="container flex justify-center mx-auto pt-4">
+    <div class="flex flex-col">
+        <div class="w-full">
+            <div class="border-b border-gray-200 shadow">
+                <table class="divide-y divide-gray-300 ">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Nama Atlet
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Tanggal Lahir
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Negara Asal
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Play Right
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Height
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            World Rank
+                            </th>
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            World Tour Rank
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Jenis Kelamin
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                            Total Point
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-300">
+                      {% for atlet in data %}
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                {{atlet.nama}}
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                  {{atlet.Tgl_Lahir}}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500">
+                                  {{atlet.Negara_Asal}}
+                                </div>
+                                
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                              {{atlet.Play_Right}}
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-gray-900">
+                                {{atlet.Height}}
+                              </div>
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-center text-gray-500">
+                                {{atlet.World_Rank}}
+                              </div>
+                          </td>
+                          <td class="px-6 py-4 text-sm text-gray-500">
+                            {{atlet.World_Tour_Rank}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">
+                              {{atlet.Jenis_Kelamin}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-center text-gray-500">
+                              {{atlet.Total_Point}}
+                            </div>
+                            
+                        </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-sm text-gray-500 text-center p-4">Atlet Non Kualifikasi</h2>
+<div class="container flex justify-center mx-auto pt-4">
+  <div class="flex flex-col">
+      <div class="w-full">
+          <div class="border-b border-gray-200 shadow">
+              <table class="divide-y divide-gray-300 ">
+                  <thead class="bg-gray-50">
+                      <tr>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Nama Atlet
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Tanggal Lahir
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Negara Asal
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Play Right
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Height
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          World Rank
+                          </th>
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Jenis Kelamin
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Total Point
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-300">
+                    {% for atlet2 in data2 %}
+                      <tr class="whitespace-nowrap">
+                          <td class="px-6 py-4 text-sm text-gray-500">
+                              {{atlet2.nama}}
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-gray-900">
+                                {{atlet2.Tgl_Lahir}}
+                              </div>
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-center text-gray-500">
+                                {{atlet2.Negara_Asal}}
+                              </div>
+                              
+                          </td>
+                          <td class="px-6 py-4 text-sm text-gray-500">
+                            {{atlet2.Play_Right}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-900">
+                              {{atlet2.Height}}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-center text-gray-500">
+                              {{atlet2.World_Rank}}
+                            </div>
+                        </td>
+                      <td class="px-6 py-4">
+                          <div class="text-sm text-gray-900">
+                            {{atlet2.Jenis_Kelamin}}
+                          </div>
+                      </td>
+                      <td class="px-6 py-4">
+                          <div class="text-sm text-center text-gray-500">
+                            {{atlet2.Total_point}}
+                          </div>
+                          
+                      </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+<h2 class="text-sm text-gray-500 text-center p-4">Atlet Ganda</h2>
+<div class="container flex justify-center mx-auto pt-4">
+  <div class="flex flex-col">
+      <div class="w-full">
+          <div class="border-b border-gray-200 shadow">
+              <table class="divide-y divide-gray-300 ">
+                  <thead class="bg-gray-50">
+                      <tr>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          ID Atlet Ganda
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Nama Atlet 1
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Nama Atlet 2
+                          </th>
+                          <th class="px-6 py-2 text-base text-gray-500">
+                          Total Point
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-300">
+                    {% for atlet3 in data3 %}
+                      <tr class="whitespace-nowrap">
+                          <td class="px-6 py-4 text-sm text-gray-500">
+                              {{atlet3.id}}
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-gray-900">
+                                {{atlet3.Nama_Atlet_1}}
+                              </div>
+                          </td>
+                          <td class="px-6 py-4">
+                              <div class="text-sm text-center text-gray-500">
+                                {{atlet3.Nama_Atlet_2}}
+                              </div>
+                              
+                          </td>
+                          <td class="px-6 py-4">
+                            <div class="text-sm text-center text-gray-500">
+                              {{atlet3.Total_Point}}
+                            </div>
+                            
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

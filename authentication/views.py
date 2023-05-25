@@ -1,222 +1,134 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib import messages
+from django.urls import reverse
+from django.db import connection
+from authentication.forms import LoginForm, AtletForm, PelatihForm, UmpireForm
 
+<<<<<<< HEAD
 # Create your views here.
 from django.shortcuts import render
 from utils1.query import query
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+=======
+from authentication.query import SQLlogin
+from authentication.register import atlet_register, pelatih_register, umpire_register
+>>>>>>> ff9d07f223d94a348c27bdcd278704e36b012294
 
-def checkRoleRedirect(request, expected):
-    """
-    -Hanya berfungsi untuk user sudah login
-    -cek apakah session role sama seperti dengan expected, jika tidak redirect ke dashboard
-    -expected: string, role yang diharapkan
-    -return: string, redirect url
-    """
-    if get_session_data(request)['role']!= expected:
-        role = get_session_data(request)['role']
-        if role == 'pelatih':
-            return "/dashboard/pelatih"
-        if role == 'umpire':
-            return "/dashboard/umpire"
-        if role == 'atlet':
-            return "/dashboard/atlet"
-    return expected
 
-def generateId():
-    """
-    -generate id untuk user yang baru
-    -return: string, id
-    """
-    id = query("""SELECT uuid_in(md5(random()::text || clock_timestamp()::text)::cstring);""")
+def main_auth(request):
+    return render(request, 'main_auth.html')
 
-    return id[0][0]
 
-def is_authenticated(request):
-    try:
-        request.session["id"]
-        return True
-    except KeyError:
-        return False
-
-def get_session_data(request):
-    if not is_authenticated(request):
-        return {}
-    try:
-        return {"id": request.session["id"], "role": request.session["role"]}
-    except:
-        return {}
-    
-def getrole(name, email):
-    id = query(f"""SELECT id FROM member WHERE email='{email}' and nama='{name}'""")
-    umpireCheck = query(f"""SELECT * FROM umpire WHERE id='{id}'""") 
-    pelatihCheck = query(f"""SELECT * FROM pelatih WHERE id='{id}'""") 
-    atletCheck = query(f"""SELECT * FROM atlet WHERE id='{id}'""") 
-
-    if pelatihCheck!=[]:
-        return "pelatih"
-    if umpireCheck!=[]:
-        return "umpire"
-    if atletCheck!=[]:
-        return "atlet"
-    return "none"
-
-def logout(request):
-    next = request.GET.get('next')
-    if not is_authenticated(request):
-        return redirect("/")
-    
-    request.session.flush()
-    request.session.clear_expired()
-
-    if next != None and next != "None":
-        return redirect(next)
-    else:
-        return redirect("/")
-    
-def show_login(request):
-    next = request.GET.get('next')
-    if is_authenticated(request):
-        role = get_session_data(request)['role']
-        if role == 'pelatih':
-            return redirect("/dashboard/pelatih")
-        if role == 'umpire':
-            return redirect("/dashboard/umpire")
-        if role == 'atlet':
-            return redirect("/dashboard/atlet")
-    if request.method == "POST":
+def user_login(request):
+    if request.method == 'POST':
+        nama = request.POST.get('nama')
         email = request.POST.get('email')
-        name = request.POST.get('name')
-        userCheck = query(f"""SELECT * FROM member WHERE email='{email}' and nama='{name}'""")
-        if userCheck!=[] and not is_authenticated(request):
-            request.session["id"] = userCheck[0]
-            request.session["role"] = getrole(name, email)
-            request.session.set_expiry(500)
-            request.session.modified = True
-            if next != None and next != "None":
-                return redirect(next)
-            else:
-                role = get_session_data(request)['role']
-                if role == 'pelatih':
-                    return redirect("/dashboard/pelatih")
-                if role == 'umpire':
-                    return redirect("/dashboard/umpire")
-                if role == 'atlet':
-                    return redirect("/dashboard/atlet")
+
+        request.session['is_atlet'] = False
+        request.session['is_pelatih'] = False
+        request.session['is_umpire'] = False
+
+        user_login = SQLlogin(nama, email)
+        print(user_login)
+        if len(user_login) > 0:
+            user = user_login[0]
+            print('ok')
+            if user['role'] == 'atlet':
+                request.session['is_atlet'] = True
+            if user['role'] == 'pelatih':
+                request.session['is_pelatih'] = True
+            if user['role'] == 'umpire':
+                request.session['is_umpire'] = True
+
+            request.session['user'] = user
+            print(request.session['user'])
+
+            if request.session['is_atlet'] or request.session['is_pelatih'] or request.session['is_umpire']:
+                response = HttpResponseRedirect(reverse("dashboard:base"))
+                return response
+
         else:
-            context = {
-                "error": "Silahkan cek kembali input Anda!"
-                }
-            return render(request, "login.html", context)
-    context = {
-        "error": ""
-        }
-    return render(request, "login.html",context)
+            messages.info(request, 'Username atau Email salah')
 
-def show_welcome(request):
-    return render(request, "welcome.html")
+    context = {'login_form': LoginForm()}
+    return render(request, 'login.html', context)
 
-def show_register(request):
-    return render(request, "register.html")
-
-def show_register_atlet(request):
+def user_register(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        negara = request.POST.get('negara')
-        tanggal_lahir = request.POST.get('tanggal_lahir')
-        play_right = True if request.POST.get('play') == 'Right' else False
-        tinggi = request.POST.get('tinggi')
-        jenis_kelamin = request.POST.get('jenis_kelamin')
-
-        if request.POST.get('play') == None or request.POST.get('jenis_kelamin') == None:
-            print("ININ")
-            print(request.POST.get('play'))
-            print(request.POST.get('jenis_kelamin'))
-            context = {
-                "error": "Silahkan cek kembali input Anda!"
-                }
-            return render(request, "register_atlet.html", context)
+        if "atlet-register" in request.POST:
+            form = AtletForm(request.POST)
+            if form.is_valid():
+                nama = form.cleaned_data.get('nama')
+                email = form.cleaned_data.get('email')
+                negara = form.cleaned_data.get('negara')
+                tanggal_lahir = form.cleaned_data.get('tanggal_lahir')
+                play_right = form.cleaned_data.get('play_right')
+                tinggi_badan = form.cleaned_data.get('tinggi_badan')
+                jenis_kelamin = form.cleaned_data.get('jenis_kelamin')
+                register = atlet_register(nama, email, negara, tanggal_lahir, play_right, tinggi_badan, jenis_kelamin)
+                if register['success']:
+                    return HttpResponseRedirect(reverse("authentication:user_login"))
+                else:
+                    messages.info(request,register['message'])
+                
         
+        elif "pelatih-register" in request.POST:
+            form = PelatihForm(request.POST)
+            if form.is_valid():
+                nama = form.cleaned_data.get('nama')
+                email = form.cleaned_data.get('email')
+                negara = form.cleaned_data.get('negara')
+                kategori = form.cleaned_data.get('kategori')
+                tanggal_mulai = form.cleaned_data.get('tanggal_mulai')
+                register = pelatih_register(nama, email, negara, kategori, tanggal_mulai)
+                if register['success']:
+                    return HttpResponseRedirect(reverse("authentication:user_login"))
+                else:
+                    messages.info(request,register['message'])
 
-        emailCheck = query(f"""SELECT * FROM member WHERE email='{email}'""")
-        if emailCheck==[]:
-            id = generateId()
-            query(f"""INSERT INTO member (id, nama, email) VALUES ('{id}', '{name}', '{email}')""")
-            query(f"""INSERT INTO atlet (id, tgl_lahir, negara_asal, play_right, height, jenis_kelamin) VALUES ('{id}', '{tanggal_lahir}', '{negara}', '{play_right}', '{tinggi}', '{jenis_kelamin}')""")
-            return redirect("/login/")
-        
-        context = {
-            "error": "Email sudah terdaftar"
-            }
-        return render(request, "register_atlet.html", context)
+        elif "umpire-register" in request.POST:
+            form = UmpireForm(request.POST)
+            print('x')
+            print(form.errors)
+            if form.is_valid():
+                nama = form.cleaned_data.get('nama')
+                email = form.cleaned_data.get('email')
+                negara = form.cleaned_data.get('negara')
+                kategori = form.cleaned_data.get('kategori')
+                tanggal_mulai = form.cleaned_data.get('tanggal_mulai')
+                register = umpire_register(nama, email, negara)
+                if register['success']:
+                    return HttpResponseRedirect(reverse("authentication:user_login"))
+                else:
+                    messages.info(request,register['message'])
 
-    context = {
-        "error": ""
-        }
-    return render(request, "register_atlet.html", context)
+    context = { 
+        'atlet_form': AtletForm(),
+        'pelatih_form': PelatihForm(),
+        'umpire_form': UmpireForm(),
+    }
+    return render(request, 'register.html', context)
 
-def show_register_umpire(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        negara = request.POST.get('negara')
-
-        emailCheck = query(f"""SELECT * FROM member WHERE email='{email}'""")
-        if emailCheck==[]:
-            id = generateId()
-            query(f"""INSERT INTO member (id, nama, email) VALUES ('{id}', '{name}', '{email}')""")
-            query(f"""INSERT INTO umpire (id, negara) VALUES ('{id}', '{negara}')""")
-            return redirect("/login/")
-        
-        context = {
-            "error": "Email sudah terdaftar"
-            }
-        return render(request, "register_umpire.html", context)
+def user_logout(request):
+    try:
+        user = request.session['user']
+        print(user[0])
+        request.session['user'] = None
+        request.session.clear()
+        request.session['is_atlet'] = False
+        request.session['is_pelatih'] = False
+        request.session['is_umpire'] = False
+        print('sukses!')
+        return HttpResponseRedirect(reverse("authentication:user_login"))
     
-    context = {
-        "error": ""
-        }
-    
-    return render(request, "register_umpire.html")
-
-# id spesialisasi
-tunggal_putra = "0692c82c-ba2c-44df-9b93-4e0c7ff1e154"
-tunggal_putri = "633c7047-eb93-4809-a573-8e390341b5ea"
-ganda_putra = "3eef3282-9fef-45cc-9221-5d0e077f414b"
-ganda_putri = "2fc1ffce-41a9-437a-8a93-c550570ff58a"
-ganda_campuran = "8a8ec091-d452-477f-9f58-3d9511b0c578"
-
-def show_register_pelatih(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        negara = request.POST.get('negara')
-        tanggal_mulai = request.POST.get('tanggal_mulai')
-
-        emailCheck = query(f"""SELECT * FROM member WHERE email='{email}'""")
-        if emailCheck==[]:
-            id = generateId()
-            query(f"""INSERT INTO member (id, nama, email) VALUES ('{id}', '{name}', '{email}')""")
-            query(f"""INSERT INTO pelatih (id, tanggal_mulai) VALUES ('{id}', '{tanggal_mulai}')""")
-            if request.POST.get('tunggal-putra') == True:
-                query(f"""INSERT INTO PELATIH_SPESIALISASI  (id_pelatih, id_spesialisasi) VALUES ('{id}', '{tunggal_putra}')""")
-            if request.POST.get('tunggal-putri') == True:
-                query(f"""INSERT INTO PELATIH_SPESIALISASI  (id_pelatih, id_spesialisasi) VALUES ('{id}', '{tunggal_putri}')""")
-            if request.POST.get('ganda-putra') == True:
-                query(f"""INSERT INTO PELATIH_SPESIALISASI  (id_pelatih, id_spesialisasi) VALUES ('{id}', '{ganda_putra}')""")
-            if request.POST.get('ganda-putri') == True:
-                query(f"""INSERT INTO PELATIH_SPESIALISASI  (id_pelatih, id_spesialisasi) VALUES ('{id}', '{ganda_putri}')""")
-            if request.POST.get('ganda-campuran') == True:
-                query(f"""INSERT INTO PELATIH_SPESIALISASI  (id_pelatih, id_spesialisasi) VALUES ('{id}', '{ganda_campuran}')""")
-            return redirect("/login/")
-        
-        context = {
-            "error": "Email sudah terdaftar"
-            }
-        return render(request, "register_pelatih.html", context)
-    context = {
-        "error": ""
-        }
-    return render(request, "register_pelatih.html",context)
+    except KeyError:
+        messages.info(request, "Belum login")
+        print('sukses!')
+        request.session.clear()
+        request.session['is_atlet'] = False
+        request.session['is_pelatih'] = False
+        request.session['is_umpire'] = False
+        return HttpResponseRedirect(reverse("authentication:user_login"))
