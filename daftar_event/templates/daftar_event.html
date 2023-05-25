@@ -142,9 +142,10 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
+                                    <a type="button" href="{% url 'daftar_event:show_daftar_kategori' item.nama_stadium item.nama_event %}" 
+                                    class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
                                       Pilih
-                                    </button>
+                                    </a>
                                   </span>
                             </td>
                           {% endfor %}
