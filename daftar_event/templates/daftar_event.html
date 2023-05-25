@@ -34,11 +34,11 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
+              <a href="{% url 'dashboard:show_dashboard_atlet' %}" href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+              <a href="{% url 'tes_kualifikasi:show_form_kualifikasi' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tes Kualifikasi</a>
               <a class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Daftar Event</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enrolled Event</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Sponsor</a>
+              <a href="{% url 'enrolled_event:show_enrolled_event' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enrolled Event</a>
+              <a href="{% url 'daftar_sponsor:show_daftar_sponsor' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Daftar Sponsor</a>
             </div>
           </div>
         </div>
@@ -121,53 +121,34 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-300">
+                      {% for item in context.event %}
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open
+                                {{item.nama_event}}
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-center text-gray-500">Rp5.000.000</div>
+                                <div class="text-sm text-center text-gray-500">
+                                  {{item.total_hadiah}}
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-center text-sm text-gray-500">
-                                12-04-2023
+                                {{item.tgl_mulai}}
                             </td>
                             <td class="px-6 py-4 text-center text-sm text-gray-500">
-                                S200
+                                {{item.kategori_superseries}}
                             </td>
                             <td class="px-6 py-4 text-center text-sm text-gray-500">
-                                3/8
+                                {{item.kapasitas}}
                             </td>
                             <td class="px-6 py-4">
                                 <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
+                                    <a type="button" href="{% url 'daftar_event:show_daftar_kategori' item.nama_stadium item.nama_event %}" 
+                                    class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
                                       Pilih
-                                    </button>
+                                    </a>
                                   </span>
                             </td>
-                        </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                French Open B
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-center text-gray-500">Rp4.000.000</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                27-07-2023
-                            </td>
-                            <td class="px-6 py-4 text-center text-sm text-gray-500">
-                                S100
-                            </td>
-                            <td class="px-6 py-4 text-center text-sm text-gray-500">
-                                8/8
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="sm:ml-3">
-                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;">
-                                      Pilih
-                                    </button>
-                                  </span>
-                            </td>
+                          {% endfor %}
                         </tr>
                     </tbody>
                 </table>

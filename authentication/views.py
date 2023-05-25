@@ -5,8 +5,17 @@ from django.urls import reverse
 from django.db import connection
 from authentication.forms import LoginForm, AtletForm, PelatihForm, UmpireForm
 
+<<<<<<< HEAD
+# Create your views here.
+from django.shortcuts import render
+from utils1.query import query
+from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+=======
 from authentication.query import SQLlogin
 from authentication.register import atlet_register, pelatih_register, umpire_register
+>>>>>>> ff9d07f223d94a348c27bdcd278704e36b012294
 
 
 def main_auth(request):
