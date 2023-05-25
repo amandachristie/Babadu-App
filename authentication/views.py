@@ -1,12 +1,10 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.contrib import messages
 from django.urls import reverse
 from django.db import connection
 from authentication.forms import LoginForm, AtletForm, PelatihForm, UmpireForm
 
 # Create your views here.
-from django.shortcuts import render
 from utils1.query import query
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
