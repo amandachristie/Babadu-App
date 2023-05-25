@@ -110,6 +110,11 @@
                       <input type="date" id="tglSelesai" name="tglSelesai">
                     
                       <input type="submit" value="Submit">
+
+                      {% if error_message %}
+                        <p class = "text-white">{{ error_message }}!</p>
+                      {% endif %}
+
                   </form>
                     <!--<form class="space-y-4 md:space-y-6" action="#" method="POST">
                         <div>
