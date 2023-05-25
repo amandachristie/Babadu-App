@@ -106,46 +106,31 @@
                             </th>
                         </tr>
                     </thead>
+                    
                     <tbody class="bg-white divide-y divide-gray-300">
+                      {% for atlet in latih_atlet %}
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                Sukiman1
+                              {{ atlet.nama }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
-                                    Sukiman1@gmail.com
+                                  {{ atlet.email }}
                                 </div>
                             </td>
+                            {% if atlet.world_rank %}
                             <td class="px-6 py-4">
-                                <div class="text-sm text-center text-gray-500">1</div>
+                              <div class="text-sm text-gray-900">
+                                {{ atlet.world_rank }}
+                              </div>
+                          </td>
+                          {% else %}
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500"></div>
                             </td>
+                            {% endif %}
                         </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                Sukiman2
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Sukiman2@gmail.com
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-center text-gray-500">2</div>
-                            </td>
-                        </tr>
-                        <tr class="whitespace-nowrap">
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                Sukiman3
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900">
-                                    Sukiman3@gmail.com
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="text-sm text-center text-gray-500">3</div>
-                            </td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
