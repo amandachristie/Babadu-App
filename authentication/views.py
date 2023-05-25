@@ -2,18 +2,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import messages
 from django.urls import reverse
-from django.db import connection
 from authentication.forms import LoginForm, AtletForm, PelatihForm, UmpireForm
+from authentication.query import *
 
-from authentication.query import SQLlogin
-from authentication.register import atlet_register, pelatih_register, umpire_register
+#Create your views here
+def welcome(request):
+    return render(request, 'welcome.html')
 
-
-def main_auth(request):
-    return render(request, 'main_auth.html')
-
-
-def user_login(request):
+def login(request):
     if request.method == 'POST':
         nama = request.POST.get('nama')
         email = request.POST.get('email')
@@ -22,7 +18,7 @@ def user_login(request):
         request.session['is_pelatih'] = False
         request.session['is_umpire'] = False
 
-        user_login = SQLlogin(nama, email)
+        user_login = execute_login(nama, email)
         print(user_login)
         if len(user_login) > 0:
             user = user_login[0]
@@ -47,7 +43,7 @@ def user_login(request):
     context = {'login_form': LoginForm()}
     return render(request, 'login.html', context)
 
-def user_register(request):
+def register(request):
     if request.method == 'POST':
         if "atlet-register" in request.POST:
             form = AtletForm(request.POST)
@@ -82,8 +78,6 @@ def user_register(request):
 
         elif "umpire-register" in request.POST:
             form = UmpireForm(request.POST)
-            print('x')
-            print(form.errors)
             if form.is_valid():
                 nama = form.cleaned_data.get('nama')
                 email = form.cleaned_data.get('email')
@@ -92,34 +86,27 @@ def user_register(request):
                 tanggal_mulai = form.cleaned_data.get('tanggal_mulai')
                 register = umpire_register(nama, email, negara)
                 if register['success']:
-                    return HttpResponseRedirect(reverse("authentication:user_login"))
+                    return HttpResponseRedirect(reverse("authentication:login"))
                 else:
                     messages.info(request,register['message'])
 
-    context = { 
-        'atlet_form': AtletForm(),
-        'pelatih_form': PelatihForm(),
-        'umpire_form': UmpireForm(),
-    }
-    return render(request, 'register.html', context)
+    return render(request, 'register.html', {'atlet_form': AtletForm(), 'pelatih_form': PelatihForm(), 'umpire_form': UmpireForm(),})
 
-def user_logout(request):
+def logout(request):
     try:
         user = request.session['user']
-        print(user[0])
         request.session['user'] = None
         request.session.clear()
         request.session['is_atlet'] = False
         request.session['is_pelatih'] = False
         request.session['is_umpire'] = False
         print('sukses!')
-        return HttpResponseRedirect(reverse("authentication:user_login"))
+        return HttpResponseRedirect(reverse("authentication:login"))
     
     except KeyError:
         messages.info(request, "Belum login")
-        print('sukses!')
         request.session.clear()
         request.session['is_atlet'] = False
         request.session['is_pelatih'] = False
         request.session['is_umpire'] = False
-        return HttpResponseRedirect(reverse("authentication:user_login"))
+        return HttpResponseRedirect(reverse("authentication:login"))
