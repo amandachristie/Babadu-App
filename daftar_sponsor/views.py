@@ -18,6 +18,14 @@ def show_daftar_sponsor(request):
         nama_sponsor = request.POST['sponsor']
         tgl_mulai = request.POST['tglMulai']
         tgl_selesai = request.POST['tglSelesai']
+
+        if not (nama_sponsor and tgl_mulai and tgl_selesai):
+            error_message = "Data yang diisikan belum lengkap, silahkan lengkapi data terlebih dahulu"
+            context = {
+                    'data_sponsor_available' : data_sponsor_available,
+                    'error_message': error_message
+            }
+            return render(request, "daftar_sponsor.html", context)
         
         sql_daftar_sponsor((request.session['user']['nama']), nama_sponsor, tgl_mulai, tgl_selesai)
         return redirect('list/')
