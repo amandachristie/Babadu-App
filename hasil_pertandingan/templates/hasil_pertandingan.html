@@ -168,6 +168,7 @@
         right: 10px;
         bottom: 10px
     }
+
     
     @media screen and (max-width: 860px) {
         .card {
@@ -272,98 +273,49 @@
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Daftar Sponsor</a>
           </div>
         </div>
-    <nav>
+<nav>
     </head>
     <body>
-        
+
     <section class="container">
     <h1>Hasil Pertandingan</h1>
+
+    {% for event in data %}
     <div class="row">
     <article class="card fl-left">
-    <section class="date">
-    <time datetime="23th feb">
-    <span>2022</span><span>08 May</span>
+  <section class="date">
+    <time datetime= {{event.tgl_mulai}} >
+      {{event.tgl_mulai}}
     </time>
+    <button href="#" type="button" class="btn btn-danger ">Mulai</button>
     </section>
     <section class="card-cont">
-    <small>US$ 400.000</small>
-    <h3>French Open</h3>
+    <h3>{{event.nama_event}}</h3>
     <div class="even-date">
     <i class="fa fa-calendar"></i>
     <time>
-    <span>S750</span>
-    <span>END: sunday 13 mei 2022</span>
-    <span>08:55pm to 12:00 am</span>
-    <span>Capacity: x </span>
+      <span>Partai: {{event.jenis_partai}}</span>
+    <span>{{event.kategori_superseries}}</span>
+    <span>END: {{event.tgl_selesai}}</span>
+    <span>Capacity: {{event.kapasitas}} </span>
+    <small>Hadiah {{event.total_hadiah}}: </small>
     </time>
     </div>
     <div class="even-info">
     <i class="fa fa-map-marker"></i>
     <p>
-    Stade Pierre de Coubertin
+      {{event.nama_stadium}}
     </p>
     </div>
     <a data-toggle="modal" data-target="#exampleModal">Hasil</a>
-    </section>
-    </article>
-    <article class="card fl-left">
-    <section class="date">
-    <time datetime="23th feb">
-    <span>2022</span><span>1 July</span>
-    </time>
-    </section>
-    <section class="card-cont">
-    <small>US$ 300.000</small>
-    <h3>Indonesia Open</h3>
-    <div class="even-date">
-    <i class="fa fa-calendar"></i>
-    <time>
-    <span>S1000</span>
-    <span>END: wednesday 06 July 2022</span>
-    <span>08:55pm to 12:00 am</span>
-    <span>Capacity: x</span>
-    </time>
+
     </div>
-    <div class="even-info">
-    <i class="fa fa-map-marker"></i>
-    <p>
-    Istora Gelora Bung Karno
-    </p>
-    </div>
-    <a data-toggle="modal" data-target="#exampleModal2">Hasil</a>
-    </section>
-    </article>
-    </div>
-    <div class="row">
-    <article class="card fl-left">
-    <section class="date">
-    <time datetime="23th feb">
-    <span>2023</span><span>1 AUG</span>
-    </time>
-    </section>
-    <section class="card-cont">
-    <small>US$ 200.000</small>
-    <h3>Australia Open</h3>
-    <div class="even-date">
-    <i class="fa fa-calendar"></i>
-    <time>
-    <span>S500</span>
-    <span>END: Saturday 06 July 2022</span>
-    <span>08:55pm to 12:00 am</span>
-    <span>Capacity: x</span>
-    </time>
-    </div>
-    <div class="even-info">
-    <i class="fa fa-map-marker"></i>
-    <p>
-    State Sports Centre
-    </p>
-    </div>
-    <a data-toggle="modal" data-target="#exampleModal3">Hasil</a>
-    </section>
-    </article>
-    </div>
-    <!-- Modal -->
+    
+    
+    {% endfor %}
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -374,51 +326,29 @@
           </div>
         </div>
         <div class="modal-body">
-            
-  
-  
           <div>
-            
+              
             <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Tahap</th>
         <th scope="col">Nama Tim</th>
       </tr>
     </thead>
     <tbody>
+      {% for babak in data2%} 
       <tr>
-        <th scope="row">1</th>
-        <td>Juara 1</td>
-        <td>Natto</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Juara 2</td>
-        <td>Horton</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Juara 3</td>
-        <td>Bully</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Semifinal</td>
-        <td>Bully</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Perempat final</td>
-        <td>Bully</td>
+        
+        <td>{{babak.jenis_babak}}</td>
+        <td>{{babak.nama_tim}}</td>
+        
       </tr>
     </tbody>
+    {% endfor %}
   </table>
-  
+ 
           </div>
-  
-  
+        </section>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -426,131 +356,9 @@
       </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-    <div class="modal-header float-right">
-        <h5>Hasil Pertandingan</h5>
-        <div class="text-right">
-        <i data-dismiss="modal" aria-label="Close" class="fa fa-close"></i>
-        </div>
-    </div>
-    <div class="modal-body">
-        
 
 
-        <div>
-        
-        <table class="table table-bordered">
-<thead>
-    <tr>
-    <th scope="col">#</th>
-    <th scope="col">Tahap</th>
-    <th scope="col">Nama Tim</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-    <th scope="row">1</th>
-    <td>Juara 1</td>
-    <td>a</td>
-    </tr>
-    <tr>
-    <th scope="row">2</th>
-    <td>Juara 2</td>
-    <td>b</td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-    <td>Juara 3</td>
-    <td>Bully</td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-    <td>Semifinal</td>
-    <td>c</td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-    <td>Perempat final</td>
-    <td>defgh</td>
-    </tr>
-</tbody>
-</table>
-
-        </div>
-
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-    </div>
-</div>
-</div>
-<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header float-right">
-            <h5>Hasil Pertandingan</h5>
-            <div class="text-right">
-            <i data-dismiss="modal" aria-label="Close" class="fa fa-close"></i>
-            </div>
-        </div>
-        <div class="modal-body">
-            
     
-    
-            <div>
-            
-            <table class="table table-bordered">
-    <thead>
-        <tr>
-        <th scope="col">#</th>
-        <th scope="col">Tahap</th>
-        <th scope="col">Nama Tim</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Juara 1</td>
-        <td>e</td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Juara 2</td>
-        <td>f</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Juara 3</td>
-        <td>h</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Semifinal</td>
-        <td>g</td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td>Perempat final</td>
-        <td>ijkl</td>
-        </tr>
-    </tbody>
-    </table>
-    
-            </div>
-    
-    
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-        </div>
-    </div>
-    </div>
-    </section>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript">
