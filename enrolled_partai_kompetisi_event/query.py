@@ -1,33 +1,34 @@
-#SQL QUERY
-from uuid import UUID
 from django.db import connection
 
-# Fetch function
 def parse(cursor):
     columns = [col[0] for col in cursor.description]
     return [dict(zip(columns, row)) for row in cursor.fetchall()]
 
 def sql_enrolled_partai_kompetisi_event(nama):
-    no_peserta = find_no_peserta(nama)
-    query =  f'''SELECT
-                    E.Nama_Event,
-                    E.Tahun,
-                    E.Nama_Stadium,
-                    PK.Jenis_Partai,
-                    E.Kategori_Superseries,
-                    E.Tgl_Mulai,
-                    E.Tgl_Selesai
-                FROM
-                    PARTAI_PESERTA_KOMPETISI PK, EVENT E 
-                WHERE
-                    PK.Nama_Event = E.Nama_Event AND PK.Tahun_Event = E.Tahun AND PK.nomor_peserta = {no_peserta[0]};
-        '''
+    id_atlet = find_id(nama)[0]
+    is_peserta = is_athlete_peserta(id_atlet)
+    
+    if is_peserta:
+        no_peserta = find_no_peserta(id_atlet)
+        query =  f'''SELECT
+                        E.Nama_Event,
+                        E.Tahun,
+                        E.Nama_Stadium,
+                        PK.Jenis_Partai,
+                        E.Kategori_Superseries,
+                        E.Tgl_Mulai,
+                        E.Tgl_Selesai
+                    FROM
+                        PARTAI_PESERTA_KOMPETISI PK, EVENT E 
+                    WHERE
+                        PK.Nama_Event = E.Nama_Event AND PK.Tahun_Event = E.Tahun AND PK.nomor_peserta = {no_peserta[0]};
+            '''
              
-    cursor = connection.cursor()
-    cursor.execute("set search_path to babadu;")
-    cursor.execute(query)
-    res = parse(cursor)
-    return res
+        cursor = connection.cursor()
+        cursor.execute("set search_path to babadu;")
+        cursor.execute(query)
+        res = parse(cursor)
+        return res
 
 def find_id(nama):
     query =  f'''SELECT ID
@@ -42,12 +43,25 @@ def find_id(nama):
     print(id_atlet)
     return id_atlet[0]
 
-def find_no_peserta(nama):
-    id_atlet = find_id(nama)
+def is_athlete_peserta(id_atlet):
+    query = f'''SELECT EXISTS(
+        SELECT 1
+        FROM peserta_kompetisi
+        WHERE id_atlet_kualifikasi = '{id_atlet}') AS is_peserta_kompetisi;
+    '''
+
+    cursor = connection.cursor()
+    cursor.execute("set search_path to babadu;")
+    cursor.execute(query)
+    result = cursor.fetchall()[0][0]
+    print("Apakah atlet adalah peserta kompetisi?", result)
+    return result
+
+def find_no_peserta(id_atlet):
     print(id_atlet)
     query =  f'''SELECT nomor_peserta
         FROM PESERTA_KOMPETISI
-        WHERE id_atlet_kualifikasi = '{id_atlet[0]}';
+        WHERE id_atlet_kualifikasi = '{id_atlet}';
         '''
              
     cursor = connection.cursor()
