@@ -63,7 +63,8 @@ def find_no_peserta(id_atlet):
     return no_peserta[0]
 
 def delete(nama_atlet, nama_event, tahun_event):
-    no_peserta = find_no_peserta(nama_atlet)
+    id_atlet = find_id(nama_atlet)[0]
+    no_peserta = find_no_peserta(id_atlet)
     error_message = ''
 
     try:

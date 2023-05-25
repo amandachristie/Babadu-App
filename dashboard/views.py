@@ -10,7 +10,7 @@ from dashboard.query import SQLprofileAtlet, SQLprofilePelatih, SQLprofileUmpire
 def base(request):
     if request.session['is_atlet'] or request.session['is_pelatih'] or request.session['is_umpire'] :
         print('x')
-        return redirect('dashboard/')
+        return redirect('profil/')
         
     return HttpResponseRedirect(reverse("authentication:user_login"))
 
