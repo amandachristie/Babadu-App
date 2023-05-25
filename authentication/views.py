@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.urls import reverse
 from authentication.forms import LoginForm, AtletForm, PelatihForm, UmpireForm
 from authentication.query import *
+from django.shortcuts import render
 
 #Create your views here
 def welcome(request):
