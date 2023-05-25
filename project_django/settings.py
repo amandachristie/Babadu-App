@@ -63,7 +63,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['babadu-b13.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['http://babadu-b13.up.railway.app/']
 
 ROOT_URLCONF = 'project_django.urls'
 
