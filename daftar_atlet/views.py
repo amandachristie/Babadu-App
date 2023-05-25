@@ -21,6 +21,7 @@ def show_list_atlet_umpire(request):
     result = cursor.fetchall()
     list_atlet = []
     for atlet in result:
+        jenis_kelamin = "Laki-laki" if atlet[7] else "Perempuan"
         list_atlet.append({
             "nama" : atlet[0],
             "Tgl_Lahir" : atlet[1],
@@ -29,7 +30,7 @@ def show_list_atlet_umpire(request):
             "Height": atlet[4],
             "World_Rank" : atlet[5],
             "World_Tour_Rank": atlet[6],
-            "Jenis_Kelamin" : atlet[7],
+            "Jenis_Kelamin" : jenis_kelamin,
             "Total_Point" : atlet[8] 
         })
 
@@ -39,6 +40,7 @@ def show_list_atlet_umpire(request):
     result2 = cursor2.fetchall()
     list_atlet2 = []
     for atlet2 in result2:
+        jenis_kelamin = "Laki-laki" if atlet2[6] else "Perempuan"
         list_atlet2.append({
             "nama" : atlet2[0],
             "Tgl_Lahir" : atlet2[1],
@@ -46,12 +48,13 @@ def show_list_atlet_umpire(request):
             "Play_Right" : atlet2[3],
             "Height": atlet2[4],
             "World_Rank" : atlet2[5],
-            "Jenis_Kelamin" : atlet2[6]
+            "Jenis_Kelamin" : jenis_kelamin,
+            "Total_point": "0"
         })
-
+    print(list_atlet2)
     cursor3 = connection.cursor()
     cursor3.execute("SET SEARCH_PATH TO babadu")
-    cursor3.execute("SELECT ID_Atlet_Ganda, m1.nama as Atlet1, m2.nama as Atlet2, (SELECT SUM(p.Total_Point) FROM point_history p WHERE p.id_atlet = m1.id) + (SELECT SUM(p.Total_Point) FROM point_history p WHERE p.id_atlet = m2.id) AS Total_Point_ganda FROM atlet_ganda, member m1 JOIN member m2 ON m1.id != m2.id where m1.id = atlet_ganda.ID_Atlet_Kualifikasi AND m2.id = atlet_ganda.ID_Atlet_Kualifikasi_2") 
+    cursor3.execute("SELECT ID_Atlet_Ganda, m1.nama as Atlet1, m2.nama as Atlet2, COALESCE((SELECT SUM(p.Total_Point) FROM point_history p WHERE p.id_atlet = m1.id), 0) + COALESCE((SELECT SUM(p.Total_Point) FROM point_history p WHERE p.id_atlet = m2.id), 0) AS Total_Point_ganda FROM atlet_ganda, member m1 JOIN member m2 ON m1.id != m2.id WHERE m1.id = atlet_ganda.ID_Atlet_Kualifikasi AND m2.id = atlet_ganda.ID_Atlet_Kualifikasi_2;") 
     result3 = cursor3.fetchall()
     list_atlet3 = []
     for atlet3 in result3:
@@ -88,7 +91,7 @@ def show_daftar_atlet(request):
             """
         )
 
-        id_peletih = cursor.fetchone()[0]
+        id_pelatih = cursor.fetchone()[0]
 
         if id_atlet:
             # cursor.execute(
@@ -98,7 +101,7 @@ def show_daftar_atlet(request):
             # )
             cursor.execute(
                 f"""
-                INSERT INTO ATLET_PELATIH VALUES ('{id_peletih}', '{id_atlet}');
+                INSERT INTO ATLET_PELATIH VALUES ('{id_pelatih}', '{id_atlet}');
                 """
             )
 

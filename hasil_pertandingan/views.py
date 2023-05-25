@@ -22,7 +22,7 @@ def show_hasil_pertandingan(request):
 
     cursor4 = connection.cursor()
     cursor4.execute("SET SEARCH_PATH TO babadu")
-    cursor4.execute("SELECT e.nama_event, e.tahun, e.nama_stadium, e.total_hadiah,STRING_AGG(pk.jenis_partai, ', ') AS jenis_partai, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai, s.kapasitas FROM event e JOIN stadium s ON e.nama_stadium = s.nama JOIN (SELECT DISTINCT nama_event, jenis_partai FROM partai_kompetisi) pk ON e.nama_event = pk.nama_event GROUP BY e.nama_event, e.tahun, e.nama_stadium,e.total_hadiah, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai, s.kapasitas;") 
+    cursor4.execute("SELECT e.nama_event, e.tahun, e.nama_stadium, e.total_hadiah, STRING_AGG(DISTINCT pk.jenis_partai, ', ') AS jenis_partai, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai, s.kapasitas, COUNT(pk.nomor_peserta) AS jumlah_peserta FROM event e JOIN stadium s ON e.nama_stadium = s.nama JOIN partai_peserta_kompetisi pk ON pk.nama_event = e.nama_event AND pk.tahun_event = e.tahun GROUP BY e.nama_event, e.tahun, e.nama_stadium, e.total_hadiah, e.kategori_superseries, e.tgl_mulai, e.tgl_selesai, s.kapasitas ORDER BY e.nama_event;") 
     result = cursor4.fetchall()
     list_event = []
     for event in result:
@@ -40,6 +40,7 @@ def show_hasil_pertandingan(request):
             "tgl_mulai" : event[6],
             "tgl_selesai": event[7],
             "kapasitas" : event[8],
+            "jumlah_peserta" : event[9],
             "list_gabung" :list_gabung
         })
     
