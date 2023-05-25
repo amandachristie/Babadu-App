@@ -148,6 +148,9 @@
                             <td class="px-6 py-4 text-sm text-gray-500">
                                 {{context.double.ganda}}
                             </td>
+                            <form action="" method="post">
+                            {% csrf_token %}
+                            <input hidden value="xd" name="kategori">
                             <td class="px-6 py-4 text-sm text-gray-900">
                                 <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
                                   <select> 
