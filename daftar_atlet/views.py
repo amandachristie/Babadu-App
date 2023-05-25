@@ -17,16 +17,17 @@ from uuid import uuid1
 def show_list_atlet_umpire(request):
     cursor = connection.cursor()
     cursor.execute("SET SEARCH_PATH TO babadu")
-    cursor.execute("SELECT nama, Tgl_Lahir, Negara_Asal, Play_Right, Height, Atlet.World_Rank, World_Tour_Rank, Jenis_Kelamin, Total_Point FROM member, Atlet, Atlet_kualifikasi, point_history WHERE member.id = atlet.id AND atlet.id = atlet_kualifikasi.id_atlet AND atlet_kualifikasi.id_atlet = point_history.id_atlet") 
+    cursor.execute("SELECT nama, Tgl_Lahir, Negara_Asal, Play_Right, Height, Atlet.World_Rank, World_Tour_Rank, Jenis_Kelamin, SUM(Total_Point) AS Total_Point FROM member, Atlet, Atlet_kualifikasi, point_history WHERE member.id = atlet.id AND atlet.id = atlet_kualifikasi.id_atlet AND atlet_kualifikasi.id_atlet = point_history.id_atlet GROUP BY nama, Tgl_Lahir, Negara_Asal, Play_Right, Height, Atlet.World_Rank, World_Tour_Rank, Jenis_Kelamin;") 
     result = cursor.fetchall()
     list_atlet = []
     for atlet in result:
         jenis_kelamin = "Laki-laki" if atlet[7] else "Perempuan"
+        play_right = "Ya" if atlet[3] else "Tidak"
         list_atlet.append({
             "nama" : atlet[0],
             "Tgl_Lahir" : atlet[1],
             "Negara_Asal" : atlet[2],
-            "Play_Right" : atlet[3],
+            "Play_Right" : play_right,
             "Height": atlet[4],
             "World_Rank" : atlet[5],
             "World_Tour_Rank": atlet[6],
@@ -41,11 +42,12 @@ def show_list_atlet_umpire(request):
     list_atlet2 = []
     for atlet2 in result2:
         jenis_kelamin = "Laki-laki" if atlet2[6] else "Perempuan"
+        play_right = "Ya" if atlet2[3] else "Tidak"
         list_atlet2.append({
             "nama" : atlet2[0],
             "Tgl_Lahir" : atlet2[1],
             "Negara_Asal" : atlet2[2],
-            "Play_Right" : atlet2[3],
+            "Play_Right" : play_right,
             "Height": atlet2[4],
             "World_Rank" : atlet2[5],
             "Jenis_Kelamin" : jenis_kelamin,
