@@ -72,7 +72,7 @@
               -->
               <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
+                <a href="/auth/logout" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
               </div>
             </div>
           </div>
@@ -93,38 +93,66 @@
     </nav>
   </head>
   <body>
-    <div class="flex items-center justify-center h-screen bg-gray-100">
-      <div class="bg-white p-8 rounded-lg w-120">
-        <h4 class="text-red-600 text-3xl text-center mb-4">FORM BUAT UJIAN KUALIFIKASI</h4>
-        <p>{{error}}</p>
-        <form method="POST" action="">
-          {% csrf_token %}
-          <table class="mx-auto">
-            <tr>
-              <td>Tahun:</td>
-              <td><input type="text" id="tahun" name="tahun" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required></td>
-            </tr>
-            <tr>
-              <td>Nomor batch:</td>
-              <td><input type="text" id="nomor_batch" name="nomor_batch" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required></td>
-            </tr>
-            <tr>
-              <td>Tempat pelaksanaan:</td>
-              <td><input type="text" id="tempat_pelaksanaan" name="tempat_pelaksanaan" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required>
-              </td>
-            </tr>
-            <tr>
-              <td>Tanggal pelaksanaan:</td>
-              <td><input type="date" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan" class="border border-gray-300 px-3 py-1 rounded-md mt-2 w-full" required></td>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><input class="btn btn-primary bg-red-600 text-white py-2 px-4 rounded-md mt-3" type="submit" value="Next" id="newBtn"></td>
-            </tr>
-          </table>
-        </form>
-      </div>
+    <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight text-center pt-4">Daftar Event</h2>
+  <p class="text-sm text-gray-500 text-center p-4">Daftarkan diri anda  pada event yang akan berlangsung</p>
+  <p class="text-sm text-gray-500 text-center p-4">{{error}}</p>
+  <div class="container flex justify-center mx-auto pt-4">
+    <div class="flex flex-col">
+        <div class="w-full">
+            <div class="border-b border-gray-200 shadow">
+                <table class="divide-y divide-gray-300 ">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Tahun
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Batch
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Tempat Pelaksanaan
+                            </th>
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Tanggal Pelaksanaan
+                            </th>
+                            {% if role == 'atlet' %}
+                            <th class="px-6 py-2 text-base text-gray-500">
+                                Action
+                            </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-300">
+                        {% for ujian in data %}
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                {{ujian.tahun}}
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-center text-gray-500">{{ujian.batch}}</div>
+                            </td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-500">
+                                {{ujian.tanggal}}
+                            </td>
+                            <td class="px-6 py-4 text-center text-sm text-gray-500">
+                                {{ujian.tempat}}
+                            </td>
+                            {% if role == 'atlet' %}
+                            <td class="px-6 py-4">
+                                <span class="sm:ml-3">
+                                    <button type="button" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" style="background-color: red;"
+                                    onclick="location.href='pertanyaan_kualifikasi/{{ujian.tahun}}/{{ujian.batch}}/{{ujian.tempat}}/{{ujian.tanggal|date:"Y-m-d"}}';">
+                                      Ikuti
+                                    </button>
+                                  </span>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
   </body>
 </html>
